@@ -3,13 +3,28 @@
 
 " vi compatibility
 set nocompatible
+filetype off
 
-" see line numbers
-set number 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" reauired
+Bundle 'gmarik/vundle'
+
+" The bundle you install will be listed here
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'tpope/vim-fugitive'
+Bundle 'klen/python-mode'
+Bundle 'Valloric/YouCompleteMe'
 
 " filetype
 filetype plugin indent on
 syntax on
+
+" see line numbers
+set number 
+
 
 " colorscheme
 colorscheme torte
@@ -23,6 +38,12 @@ call pathogen#helptags()
 """"""""""""""""""""""""""
 " Specific Plugins configs
 """"""""""""""""""""""""""
+
+" Powerline setup
+"""""""""""""""""
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
+
 
 " R plugin
 """"""""""
@@ -85,11 +106,38 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 let g:markdown_fenced_languages = ['r']
 " let g:markdown_fenced_languages = ['r', 'coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'r']
 
+
+" Markdown to html command
+nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
+
 " Python configuration
 """"""""""""""""""""
 " autocmd FileType python,pyrex,yml set autoindent tabstop=4 shiftwidth=4 smarttab expandtab
 " autocmd FileType python,pyrex,yml set foldmethod=indent foldminlines=3
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
 " autocmd FileType python inoremap <Nul> <C-x><C-o>
+"
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Flagging Unnecessary Whitespace
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 

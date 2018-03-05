@@ -1,5 +1,5 @@
 
-if exists("g:disable_r_ftplugin")
+if exists("g:disable_r_ftplugin") || has("nvim")
     finish
 endif
 
@@ -9,9 +9,17 @@ if exists("g:rplugin_failed")
     finish
 endif
 
-" Some buffer variables common to R, Rrst, Rnoweb, Rhelp and Rdoc need to be 
+" Some buffer variables common to R, Rrst, Rnoweb, Rhelp and Rdoc need to be
 " defined after the global ones:
 runtime r-plugin/common_buffer.vim
+
+if !exists("b:did_ftplugin") && !exists("g:rplugin_runtime_warn")
+    runtime ftplugin/rrst.vim
+    if !exists("b:did_ftplugin")
+        call RWarningMsgInp("Your runtime files seems to be outdated.\nSee: https://github.com/jalvesaq/R-Vim-runtime")
+        let g:rplugin_runtime_warn = 1
+    endif
+endif
 
 function! RrstIsInRCode(vrb)
     let chunkline = search("^\\.\\. {r", "bncW")
@@ -81,7 +89,7 @@ function! RMakeHTMLrrst(t)
         let rcmd = rcmd . '; render_rst(strict=TRUE)'
     endif
     let rcmd = rcmd . '; knit("' . expand("%:t") . '")'
-    
+
     if a:t == "odt"
         let rcmd = rcmd . '; system("rst2odt ' . expand("%:r:t") . ".rst " . expand("%:r:t") . '.odt")'
     else
@@ -96,14 +104,7 @@ endfunction
 
 function! RMakePDFrrst()
     if g:rplugin_vimcomport == 0
-        if has("nvim")
-            call jobsend(g:rplugin_clt_job, "DiscoverVimComPort\n")
-        else
-            Py DiscoverVimComPort()
-        endif
-        if g:rplugin_vimcomport == 0
-            call RWarningMsg("The vimcom package is required to make and open the PDF.")
-        endif
+        call RWarningMsg("The vimcom package is required to make and open the PDF.")
     endif
     update
     call RSetWD()
@@ -118,7 +119,11 @@ function! RMakePDFrrst()
         endif
     endif
 
-    let pdfcmd = 'vim.interlace.rrst("' . expand("%:t") . '", rrstdir = "' . expand("%:p:h") . '"'
+    let rrstdir = expand("%:p:h")
+    if has("win32") || has("win64")
+        let rrstdir = substitute(rrstdir, '\\', '/', 'g')
+    endif
+    let pdfcmd = 'vim.interlace.rrst("' . expand("%:t") . '", rrstdir = "' . rrstdir . '"'
     if exists("g:vimrplugin_rrstcompiler")
         let pdfcmd = pdfcmd . ", compiler='" . g:vimrplugin_rrstcompiler . "'"
     endif
@@ -136,7 +141,7 @@ function! RMakePDFrrst()
     if ok == 0
         return
     endif
-endfunction  
+endfunction
 
 " Send Rrst chunk to R
 function! SendRrstChunkToR(e, m)
@@ -153,14 +158,13 @@ function! SendRrstChunkToR(e, m)
     endif
     if a:m == "down"
         call RrstNextChunk()
-    endif  
+    endif
 endfunction
 
 let b:IsInRCode = function("RrstIsInRCode")
 let b:PreviousRChunk = function("RrstPreviousChunk")
 let b:NextRChunk = function("RrstNextChunk")
 let b:SendChunkToR = function("SendRrstChunkToR")
-let b:SourceLines = function("RSourceLines")
 
 "==========================================================================
 " Key bindings and menu items
@@ -172,20 +176,21 @@ call RControlMaps()
 call RCreateMaps("nvi", '<Plug>RSetwd',        'rd', ':call RSetWD()')
 
 " Only .Rrst files use these functions:
-call RCreateMaps("nvi", '<Plug>RKnit',        'kn', ':call RKnit()')
-call RCreateMaps("nvi", '<Plug>RMakePDFK',    'kp', ':call RMakePDFrrst()')
-call RCreateMaps("nvi", '<Plug>RMakeHTML',    'kh', ':call RMakeHTMLrrst("html")')
-call RCreateMaps("nvi", '<Plug>RMakeODT',     'ko', ':call RMakeHTMLrrst("odt")')
-call RCreateMaps("nvi", '<Plug>RIndent',      'si', ':call RrstToggleIndentSty()')
-call RCreateMaps("ni",  '<Plug>RSendChunk',   'cc', ':call b:SendChunkToR("silent", "stay")')
-call RCreateMaps("ni",  '<Plug>RESendChunk',  'ce', ':call b:SendChunkToR("echo", "stay")')
-call RCreateMaps("ni",  '<Plug>RDSendChunk',  'cd', ':call b:SendChunkToR("silent", "down")')
-call RCreateMaps("ni",  '<Plug>REDSendChunk', 'ca', ':call b:SendChunkToR("echo", "down")')
-nmap <buffer><silent> gn :call b:NextRChunk()<CR>
-nmap <buffer><silent> gN :call b:PreviousRChunk()<CR>
+call RCreateMaps("nvi", '<Plug>RKnit',          'kn', ':call RKnit()')
+call RCreateMaps("nvi", '<Plug>RMakePDFK',      'kp', ':call RMakePDFrrst()')
+call RCreateMaps("nvi", '<Plug>RMakeHTML',      'kh', ':call RMakeHTMLrrst("html")')
+call RCreateMaps("nvi", '<Plug>RMakeODT',       'ko', ':call RMakeHTMLrrst("odt")')
+call RCreateMaps("nvi", '<Plug>RIndent',        'si', ':call RrstToggleIndentSty()')
+call RCreateMaps("ni",  '<Plug>RSendChunk',     'cc', ':call b:SendChunkToR("silent", "stay")')
+call RCreateMaps("ni",  '<Plug>RESendChunk',    'ce', ':call b:SendChunkToR("echo", "stay")')
+call RCreateMaps("ni",  '<Plug>RDSendChunk',    'cd', ':call b:SendChunkToR("silent", "down")')
+call RCreateMaps("ni",  '<Plug>REDSendChunk',   'ca', ':call b:SendChunkToR("echo", "down")')
+call RCreateMaps("n",  '<Plug>RNextRChunk',     'gn', ':call b:NextRChunk()')
+call RCreateMaps("n",  '<Plug>RPreviousRChunk', 'gN', ':call b:PreviousRChunk()')
 
 " Menu R
 if has("gui_running")
+    runtime r-plugin/gui_running.vim
     call MakeRMenu()
 endif
 
@@ -193,4 +198,8 @@ let g:rplugin_has_rst2pdf = 0
 
 call RSourceOtherScripts()
 
-let b:undo_ftplugin .= " | unlet! b:IsInRCode b:SourceLines b:PreviousRChunk b:NextRChunk b:SendChunkToR"
+if exists("b:undo_ftplugin")
+    let b:undo_ftplugin .= " | unlet! b:IsInRCode b:PreviousRChunk b:NextRChunk b:SendChunkToR"
+else
+    let b:undo_ftplugin = "unlet! b:IsInRCode b:PreviousRChunk b:NextRChunk b:SendChunkToR"
+endif
