@@ -76,8 +76,10 @@ alias selene='ssh -X moariim@selene'
 export SVN_EDITOR=vim
 
 
-export PATH=:/usr/local/Cellar/macvim/8.0-144_3/bin:/usr/local/Cellar/vim/8.0.1400_4/bin:$PATH:~/Documents/Work/Postdoc/src/homer/bin:~/Documents/Work/Postdoc/src/weblogo
+# export PATH=:/usr/local/Cellar/macvim/8.0-144_3/bin:/usr/local/Cellar/vim/8.0.1400_4/bin:$PATH:~/Documents/Work/Postdoc/src/homer/bin:~/Documents/Work/Postdoc/src/weblogo
+export PATH=:/usr/local/Cellar/macvim/8.0-145_2/bin:/usr/local/Cellar/vim/8.0.1600/bin:$PATH:~/Documents/Work/Postdoc/src/homer/bin:~/Documents/Work/Postdoc/src/weblogo
 
 # added by Anaconda3 5.0.1 installer
-export PATH="/Users/Matahi/anaconda3/bin:$PATH"
+export PATH=/usr/local/anaconda3/bin:$PATH
+# export PATH="/Users/Matahi/anaconda3/bin:$PATH"
 
