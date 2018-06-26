@@ -16,12 +16,6 @@ PS1='\u@\h:\w$ '
 defaults write org.R-project.R force.LANG en_US.UTF-8
 
 #############
-## Python Config
-#############
-# export PYTHONPATH=/usr/local/lib/python2.7/site-packages/
-# export PYTHONPATH=/usr/local/lib/python2.7/site-packages/:/usr/local/Cellar/python/2.7.11/bin
-
-#############
 ## Customizing Terminal 
 #############
 alias ls='ls -Gp' ## Putting color and a "/" for folders
@@ -39,7 +33,6 @@ alias CpG='cd ~/Documents/Work/PhD/methylation/Human450K/CpG/'
 alias CIMP='cd ~/Documents/Work/PhD/methylation/Human450K/CIMP/'
 
 # Postdoc
-alias toto='cd ~/Documents/Work/projects'
 alias mskcc='cd ~/Documents/Work/Postdoc'
 alias projects='cd ~/Documents/Work/Postdoc/projects'
 alias AML='cd ~/Documents/Work/Postdoc/projects/AML'
@@ -60,6 +53,8 @@ alias notebook='cd ~/Google\ Drive/leukgen/home/moariim/Classification'
 
 # Personnal
 alias webpage='cd ~/Documents/Work/Webpage/matahi.github.io'
+alias toto='cd ~/Documents/Work/projects'
+alias kaggle='cd ~/Documents/Work/kaggle'
 
 # ssh connection 
 alias s01='ssh -X moariim@s01.cbio.mskcc.org'
@@ -70,16 +65,39 @@ alias selene='ssh -X moariim@selene'
 # Personnal
 # alias ssh='ssh -X'
 
-#############
-## SVN editor
-#############
-export SVN_EDITOR=vim
+# Python Config
+# export PYTHONPATH=/usr/local/anaconda3/lib
+# export PYTHONPATH=/usr/local/anaconda3/lib/python3.6/site-packages:$PYTHONPATH
+PYTHONPATH=/usr/local/lib/python3.6/site-packages:$PYTHONPATH
 
+# SVN editor
+SVN_EDITOR=vim
 
-# export PATH=:/usr/local/Cellar/macvim/8.0-144_3/bin:/usr/local/Cellar/vim/8.0.1400_4/bin:$PATH:~/Documents/Work/Postdoc/src/homer/bin:~/Documents/Work/Postdoc/src/weblogo
-export PATH=:/usr/local/Cellar/macvim/8.0-145_2/bin:/usr/local/Cellar/vim/8.0.1600/bin:$PATH:~/Documents/Work/Postdoc/src/homer/bin:~/Documents/Work/Postdoc/src/weblogo
+# PATH
+PATH=~/Documents/Work/Postdoc/src/homer/bin:$PATH # homer
+PATH=~/Documents/Work/Postdoc/src/weblogo:$PATH # webpage
+PATH=/usr/local/bin:/usr/local/sbin:$PATH 
+PATH=/usr/local/opt/python/libexec/bin:$PATH # python pointing to 3.6 with homebrew
 
-# added by Anaconda3 5.0.1 installer
-export PATH=/usr/local/anaconda3/bin:$PATH
-# export PATH="/Users/Matahi/anaconda3/bin:$PATH"
+# PKG_CONFIG_PATH
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/gtk+-2.0.pc:$PKG_CONFIG_PATH
+PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 
+# Add CFLAGS for python modulesoCFLAGS=-I$(brew --prefix)/include LDFLAGS=-L$(brew --prefix)/lib pip install <package>
+CFLAGS=-I$(brew --prefix)/include 
+LDFLAGS=-L$(brew --prefix)/lib 
+# pip install <package>
+
+# Exporting
+export SVN_EDITOR
+export PATH
+export PKG_CONFIG_PATH
+export PYTHONPATH
+	
+#virtualenv
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+# added by Miniconda3 installer
+export PATH="/Users/Matahi/miniconda3/bin:$PATH"
