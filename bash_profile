@@ -49,6 +49,9 @@ alias Cargo='cd ~/Documents/Work/Postdoc/projects/Cargo_final'
 alias CMML='cd ~/Documents/Work/Postdoc/projects/CMML'
 alias MDSU='cd ~/Documents/Work/Postdoc/projects/MDSU'
 alias Impute='cd ~/Documents/Work/Postdoc/projects/imputation'
+alias datasets='cd ~/Documents/Work/Postdoc/projects/datasets'
+alias analysis='cd ~/Documents/Work/Postdoc/projects/datasets_analysis'
+alias Cardiff='cd ~/Documents/Work/Postdoc/projects/Cardiff'
 alias notebook='cd ~/Google\ Drive/leukgen/home/moariim/Classification'
 
 # Personnal
@@ -66,9 +69,7 @@ alias selene='ssh -X moariim@selene'
 # alias ssh='ssh -X'
 
 # Python Config
-# export PYTHONPATH=/usr/local/anaconda3/lib
-# export PYTHONPATH=/usr/local/anaconda3/lib/python3.6/site-packages:$PYTHONPATH
-PYTHONPATH=/usr/local/lib/python3.6/site-packages:$PYTHONPATH
+# PYTHONPATH=/usr/local/lib/python3.6/site-packages:$PYTHONPATH
 
 # SVN editor
 SVN_EDITOR=vim
@@ -84,7 +85,7 @@ PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/gtk+-2.0.pc:$PKG_CONFIG_PATH
 PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 
-# Add CFLAGS for python modulesoCFLAGS=-I$(brew --prefix)/include LDFLAGS=-L$(brew --prefix)/lib pip install <package>
+# Add CFLAGS for python modules
 CFLAGS=-I$(brew --prefix)/include 
 LDFLAGS=-L$(brew --prefix)/lib 
 # pip install <package>
@@ -93,11 +94,11 @@ LDFLAGS=-L$(brew --prefix)/lib
 export SVN_EDITOR
 export PATH
 export PKG_CONFIG_PATH
-export PYTHONPATH
+# export PYTHONPATH
 	
 #virtualenv
 export WORKON_HOME=~/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 
 # added by Miniconda3 installer
-export PATH="/Users/Matahi/miniconda3/bin:$PATH"
