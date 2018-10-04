@@ -5,18 +5,18 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" reauired
-Bundle 'gmarik/vundle'
-
-" The bundle you install will be listed here
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'tpope/vim-fugitive'
-Bundle 'klen/python-mode'
-Bundle 'Valloric/YouCompleteMe'
+" set rtp+=~/.vim/bundle/vundle/
+" call vundle#rc()
+" 
+" " let Vundle manage Vundle
+" " reauired
+" Bundle 'gmarik/vundle'
+" 
+" " The bundle you install will be listed here
+" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Bundle 'tpope/vim-fugitive'
+" Bundle 'klen/python-mode'
+" Bundle 'Valloric/YouCompleteMe'
 
 " filetype
 filetype plugin indent on
@@ -25,15 +25,8 @@ syntax on
 " see line numbers
 set number 
 
-
 " colorscheme
 colorscheme torte
-
-""""""""""""""""""""""""""""""""""""""""
-" General Plugin Management via pathogen 
-"""""""""""""""""""""""""""""""""""""""
-call pathogen#infect()
-call pathogen#helptags()
 
 """"""""""""""""""""""""""
 " Specific Plugins configs
@@ -130,14 +123,13 @@ au BufNewFile,BufRead *.py
 " Flagging Unnecessary Whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-"python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-
+" "python with virtualenv support
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"     project_base_dir = os.environ['VIRTUAL_ENV']
+"     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"     execfile(activate_this, dict(__file__=activate_this))
+" EOF
 

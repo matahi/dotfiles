@@ -25,51 +25,15 @@ alias ls='ls -Gp' ## Putting color and a "/" for folders
 #############
 alias work='cd ~/Documents/Work/'
 
-# Thesis
-alias methylation='cd ~/Documents/Work/PhD/methylation/'
-alias Thesis='cd ~/Documents/Work/PhD/methylation/Manuscript/'
-alias Defense='cd ~/Documents/Work/PhD/methylation/Defense/'
-alias CpG='cd ~/Documents/Work/PhD/methylation/Human450K/CpG/'
-alias CIMP='cd ~/Documents/Work/PhD/methylation/Human450K/CIMP/'
-
-# Postdoc
-alias mskcc='cd ~/Documents/Work/Postdoc'
-alias projects='cd ~/Documents/Work/Postdoc/projects'
-alias AML='cd ~/Documents/Work/Postdoc/projects/AML'
-alias scd='cd ~/Documents/Work/Postdoc/projects/scd'
-alias Lila='cd ~/Documents/Work/Postdoc/projects/Lila'
-alias Fusion='cd ~/Documents/Work/Postdoc/projects/Fusion'
-alias Myeloid='cd ~/Documents/Work/Postdoc/projects/Myeloid'
-alias Classification='cd ~/Documents/Work/Postdoc/projects/Classification'
-alias WGS='cd ~/Documents/Work/Postdoc/projects/WGS'
-alias Validation='cd ~/Documents/Work/Postdoc/projects/Validation'
-alias Niccolo='cd ~/Documents/Work/Postdoc/projects/Myeloma'
-alias Eva='cd ~/Documents/Work/Postdoc/projects/Eva'
-alias Cargo='cd ~/Documents/Work/Postdoc/projects/Cargo_final'
-alias CMML='cd ~/Documents/Work/Postdoc/projects/CMML'
-alias MDSU='cd ~/Documents/Work/Postdoc/projects/MDSU'
-alias Impute='cd ~/Documents/Work/Postdoc/projects/imputation'
-alias datasets='cd ~/Documents/Work/Postdoc/projects/datasets'
-alias analysis='cd ~/Documents/Work/Postdoc/projects/datasets_analysis'
-alias Cardiff='cd ~/Documents/Work/Postdoc/projects/Cardiff'
-alias notebook='cd ~/Google\ Drive/leukgen/home/moariim/Classification'
-
 # Personnal
 alias webpage='cd ~/Documents/Work/Webpage/matahi.github.io'
 alias toto='cd ~/Documents/Work/projects'
 alias kaggle='cd ~/Documents/Work/kaggle'
 
-# ssh connection 
-alias s01='ssh -X moariim@s01.cbio.mskcc.org'
-alias luna='ssh -X moariim@luna'
-alias selene='ssh -X moariim@selene'
-
+alias owkin='cd ~/Documents/Work/'
 
 # Personnal
 # alias ssh='ssh -X'
-
-# Python Config
-# PYTHONPATH=/usr/local/lib/python3.6/site-packages:$PYTHONPATH
 
 # SVN editor
 SVN_EDITOR=vim
@@ -94,11 +58,10 @@ LDFLAGS=-L$(brew --prefix)/lib
 export SVN_EDITOR
 export PATH
 export PKG_CONFIG_PATH
-# export PYTHONPATH
 	
 #virtualenv
-export WORKON_HOME=~/.virtualenvs
-# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=~/.virtualenvs
+# # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # added by Miniconda3 installer
