@@ -23,14 +23,15 @@ alias ls='ls -Gp' ## Putting color and a "/" for folders
 #############
 ## Paths
 #############
-alias work='cd ~/Documents/Work/'
-
 # Personnal
 alias webpage='cd ~/Documents/Work/Webpage/matahi.github.io'
 alias toto='cd ~/Documents/Work/projects'
 alias kaggle='cd ~/Documents/Work/kaggle'
 
 alias owkin='cd ~/Documents/Work/'
+alias Mesothelioma='cd ~/Documents/Work/Projects/Research/Mesothelioma/'
+
+alias shallowy='ssh mam@82.216.181.242'
 
 # Personnal
 # alias ssh='ssh -X'
@@ -59,9 +60,10 @@ export SVN_EDITOR
 export PATH
 export PKG_CONFIG_PATH
 	
-#virtualenv
-# export WORKON_HOME=~/.virtualenvs
-# # export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-# source /usr/local/bin/virtualenvwrapper.sh
+#virtualenv #after installing python/virtualenv/virtualenvwrapper
+export WORKON_HOME=~/Envs
+source /usr/local/bin/virtualenvwrapper.sh
+
+
 
 # added by Miniconda3 installer

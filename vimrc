@@ -5,18 +5,30 @@
 set nocompatible
 filetype off
 
-" set rtp+=~/.vim/bundle/vundle/
-" call vundle#rc()
-" 
-" " let Vundle manage Vundle
-" " reauired
-" Bundle 'gmarik/vundle'
-" 
-" " The bundle you install will be listed here
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-" Bundle 'tpope/vim-fugitive'
-" Bundle 'klen/python-mode'
-" Bundle 'Valloric/YouCompleteMe'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+" reauired
+Plugin 'VundleVim/Vundle.vim'
+
+" The bundle you install will be listed here
+Plugin 'scrooloose/nerdtree'
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'klen/python-mode'
+" Plugin 'Valloric/YouCompleteMe'
+"
+
+
+"" R plugin
+Plugin 'jalvesaq/Nvim-R'
+" Plugin 'jcfaria/Vim-R-plugin'
+
+"" IPython plugin
+Plugin 'broesler/jupyter-vim'
+
+call vundle#end()
 
 " filetype
 filetype plugin indent on
@@ -43,10 +55,9 @@ set laststatus=2
 au FileType r setl foldmethod=marker et
 
 " to not replace <- by _
-let vimrplugin_assign=0 
+let R_assign=0
 
-let vimrplugin_rnowebchunk=0
-set completeopt=menu
+"set completeopt=menu
 
 " Latex plugin
 """"""""""""""""""""
@@ -111,17 +122,17 @@ nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
 " autocmd FileType python inoremap <Nul> <C-x><C-o>
 "
 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-
-" Flagging Unnecessary Whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" au BufNewFile,BufRead *.py
+"     \ set tabstop=4
+"     \ set softtabstop=4
+"     \ set shiftwidth=4
+"     \ set textwidth=79
+"     \ set expandtab
+"     \ set autoindent
+"     \ set fileformat=unix
+" 
+" " Flagging Unnecessary Whitespace
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " "python with virtualenv support
 " py << EOF
