@@ -12,21 +12,30 @@ call vundle#begin()
 " reauired
 Plugin 'VundleVim/Vundle.vim'
 
-" The bundle you install will be listed here
+" General plugin
+Plugin 'w0rp/ale' "syntax checking
 Plugin 'scrooloose/nerdtree'
-" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'klen/python-mode'
-" Plugin 'Valloric/YouCompleteMe'
-"
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} "dont forget to install powerline fonts for iterm2 and set them in profiles
+Plugin 'Valloric/YouCompleteMe' "auto-completion
+" Plugin 'tpope/vim-fugitive' "git in vim
 
+"" latex plugin
+Plugin 'vim-latex/vim-latex' 
 
 "" R plugin
 Plugin 'jalvesaq/Nvim-R'
 " Plugin 'jcfaria/Vim-R-plugin'
+Plugin 'vim-pandoc/vim-rmarkdown' "R-markdown
 
 "" IPython plugin
 Plugin 'broesler/jupyter-vim'
+" Plugin 'klen/python-mode'
+
+"" Python autocompletion
+" Plugin 'davidhalter/jedi-vim'
+
+"" vim-slime
+Plugin 'jpalardy/vim-slime'
 
 call vundle#end()
 
@@ -48,7 +57,6 @@ colorscheme torte
 """""""""""""""""
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
-
 
 " R plugin
 """"""""""
@@ -106,6 +114,7 @@ set grepprg=grep\ -nH\ $*
 
 " Markdown plugin
 """"""""""""""""""""
+au BufNewFile,BufFilePre,BufRead *.Rmd set filetype=rmarkdown
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 let g:markdown_fenced_languages = ['r']
 " let g:markdown_fenced_languages = ['r', 'coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html', 'r']
@@ -143,4 +152,20 @@ nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
 "     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
 "     execfile(activate_this, dict(__file__=activate_this))
 " EOF
+
+
+" Jupyter-vim configuration
+""""""""""""""""""""
+let g:jupyter_verbose = 1 " Echo messages in the console
+
+" " python-mode configuration
+"""""""""""""""""""""
+" let g:pymode_python = 'python3'
+
+" vim-slime configuration
+"""""""""""""""""""""""'
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+"let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
+
 
