@@ -25,15 +25,24 @@ alias ls='ls -Gp' ## Putting color and a "/" for folders
 #############
 # Personnal
 alias webpage='cd ~/Documents/Work/Webpage/matahi.github.io'
-alias toto='cd ~/Documents/Work/projects'
-alias kaggle='cd ~/Documents/Work/kaggle'
+alias Kaggle='cd ~/Documents/Work/kaggle'
+alias Perso='cd ~/Documents/Perso/Projects/'
 
-alias owkin='cd ~/Documents/Work/'
+alias Owkin='cd ~/Documents/Work/'
+alias Projects='cd ~/Documents/Work/Projects'
 alias Research='cd ~/Documents/Work/Projects/Research'
-alias Mesothelioma='cd ~/Documents/Work/Projects/Research/Mesothelioma/'
-alias Immune='cd ~/Documents/Work/Projects/Research/Immune/'	
+alias Pharma='cd ~/Documents/Work/Projects/Pharma'
 
-alias shallowy='ssh mam@193.248.206.26'
+alias Radiology='cd ~/Documents/Work/Projects/Research/Radiology'
+alias Histology='cd ~/Documents/Work/Projects/Research/Histology'
+
+alias Mesothelioma='cd ~/Documents/Work/Projects/Research/Histology/Mesothelioma/'
+alias Immune='cd ~/Documents/Work/Projects/Research/Molecular/Immune/'	
+alias Mutation='cd ~/Documents/Work/Projects/Research/Molecular/Mutation/'	
+
+alias Nyc='ssh -A mam@193.248.206.26'
+alias Shallowy='ssh -A mam@192.168.1.17'
+alias Deepy='ssh -A mam@192.168.1.20'
 
 # Personnal
 # alias ssh='ssh -X'

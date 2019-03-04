@@ -4,6 +4,7 @@
 " vi compatibility
 set nocompatible
 filetype off
+set clipboard=unnamed
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -48,6 +49,8 @@ set number
 
 " colorscheme
 colorscheme torte
+
+set pastetoggle=<F3>
 
 """"""""""""""""""""""""""
 " Specific Plugins configs
