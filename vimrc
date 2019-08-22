@@ -48,7 +48,7 @@ syntax on
 set number 
 
 " colorscheme
-colorscheme torte
+colorscheme torte 
 
 set pastetoggle=<F3>
 
