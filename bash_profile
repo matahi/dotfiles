@@ -85,9 +85,9 @@ export PKG_CONFIG_PATH
 export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 # to see active virtualenv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1 
-
-eval "$(pyenv init -)"
+# export PYENV_VIRTUALENV_DISABLE_PROMPT=1 
+# 
+# eval "$(pyenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/matahi/google-cloud-sdk/path.bash.inc' ]; then . '/Users/matahi/google-cloud-sdk/path.bash.inc'; fi
