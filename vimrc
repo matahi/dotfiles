@@ -17,7 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'w0rp/ale' "syntax checking
 Plugin 'scrooloose/nerdtree'
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} "dont forget to install powerline fonts for iterm2 and set them in profiles
-Plugin 'Valloric/YouCompleteMe' "auto-completion
+" Plugin 'Valloric/YouCompleteMe' "auto-completion
 " Plugin 'tpope/vim-fugitive' "git in vim
 
 "" latex plugin
@@ -29,7 +29,7 @@ Plugin 'jalvesaq/Nvim-R'
 Plugin 'vim-pandoc/vim-rmarkdown' "R-markdown
 
 "" IPython plugin
-Plugin 'broesler/jupyter-vim'
+" Plugin 'broesler/jupyter-vim'
 " Plugin 'klen/python-mode'
 
 "" Python autocompletion
@@ -38,7 +38,7 @@ Plugin 'broesler/jupyter-vim'
 "" vim-slime
 Plugin 'jpalardy/vim-slime'
 
-call vundle#end()
+" call vundle#end()
 
 " filetype
 filetype plugin indent on
